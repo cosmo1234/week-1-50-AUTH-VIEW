@@ -1,0 +1,6 @@
+framework module Pods_50_AUTH_PAGE {
+  umbrella header "Pods-50-AUTH PAGE-umbrella.h"
+
+  export *
+  module * { export * }
+}

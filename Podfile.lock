@@ -1,0 +1,17 @@
+PODS:
+  - IQKeyboardManagerSwift (4.0.8)
+  - Material (2.4.6):
+    - Material/Core (= 2.4.6)
+  - Material/Core (2.4.6)
+
+DEPENDENCIES:
+  - IQKeyboardManagerSwift
+  - Material (~> 2.0)
+
+SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
+  Material: 43bd91d61e86ae2b6d6574e28fcb1ed48ff813cb
+
+PODFILE CHECKSUM: 9f0baf800e12131a7b9719e81b97b60189d276bc
+
+COCOAPODS: 1.0.1
