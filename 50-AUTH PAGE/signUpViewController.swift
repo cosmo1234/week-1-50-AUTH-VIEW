@@ -17,6 +17,19 @@ class signUpViewController: UIViewController{
         return image
     }()
     
+    let backButton: RaisedButton = {
+       let btn = RaisedButton()
+        btn.backgroundColor = .black
+        btn.pulseColor = .gray
+        btn.shadowColor = .gray
+        btn.shadowRadius = 5
+        btn.setImage(UIImage(named: "left"), for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        btn.setTitleColor(.white, for: .normal)
+        return btn
+        
+    }()
+    
     let headerText: UILabel = {
         let label = UILabel()
         label.text = "EXAMPLE"
@@ -70,7 +83,9 @@ class signUpViewController: UIViewController{
         view.addSubview(signinButton)
         view.addSubview(signinWithText)
         view.addSubview(socialLinks)
+        view.addSubview(backButton)
         view.addConstraintsWithFormat("H:|[v0]|", views: bgImage)
+        view.addConstraintsWithFormat("H:|[v0(60)]", views: backButton)
         view.addConstraintsWithFormat("V:|[v0]|", views: bgImage)
         view.addConstraintsWithFormat("H:|-30-[v0]", views: headerText)
         view.addConstraintsWithFormat("H:|-30-[v0]-30-|", views: emailTextField)
@@ -80,9 +95,9 @@ class signUpViewController: UIViewController{
         view.addConstraintsWithFormat("H:|[v0]|", views: signinWithText)
         view.addConstraintsWithFormat("H:|[v0]|", views: socialLinks)
         view.addConstraintsWithFormat("H:|-70-[v0(250)]-50-|", views: signinButton)
-        view.addConstraintsWithFormat("V:|-100-[v0]-20-[v1(30)]-40-[v2(30)]-40-[v3]-20-[v4]-30-[v5(40)]-60-[v6]-20-[v7]", views: headerText,emailTextField,passwordTextField,confirmPasswordTextField,forgotPasswordButton,signinButton,signinWithText,socialLinks)
-        
-        
+
+        view.addConstraintsWithFormat("V:|-23-[v0(30)]-100-[v1]-20-[v2(30)]-40-[v3(30)]-40-[v4]-20-[v5]-30-[v6(40)]-60-[v7]-20-[v8]", views: backButton, headerText,emailTextField,passwordTextField,confirmPasswordTextField,forgotPasswordButton,signinButton,signinWithText,socialLinks)
+        backButton.addTarget(self, action: #selector(signUpViewController.backBtn), for: .touchUpInside)
         //attributed text
         var labelAttribute = NSMutableAttributedString(string: "SIGN", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 50)])
         labelAttribute.append(NSAttributedString(string: " UP", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 50),NSForegroundColorAttributeName: UIColor(red:0.00, green:0.85, blue:0.29, alpha:1.0)]))
@@ -101,7 +116,9 @@ class signUpViewController: UIViewController{
         
         headerText.attributedText = labelAttribute
     }
-    
+    func backBtn(){
+        self.present(ViewController(), animated: true, completion: nil)
+    }
     static func setupTextViews(placeholder:String,type:UIKeyboardType,secured:Bool,image:String)->TextField{
         let nameField = TextField()
         nameField.placeholder = placeholder
